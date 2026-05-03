@@ -1,0 +1,68 @@
+﻿@model List<Product>
+<div>
+    <a asp-controller="Product" asp-action="Create" class="btn btn-primary">Add product</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Major</th>
+            <th scope="col">Image</th>
+            <th scope="col">Is Deleted</th>
+                <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in Model)
+        {
+
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Major</td>
+                <td>
+                    <img style="width:40px; height:40px" src="~/assets/images//@item.ImageUrl" />
+                </td>
+                <td>
+                    @{
+                        if (item.IsDeleted == false)
+                       
+                        {
+                            <td class="text-success">Silinmeyib</td>
+                        }
+                        else
+                        {
+                            <td class="text-danger">Silinib</td>
+                        }
+
+                    }
+                        <td>
+                            <a class="btn btn-warning">Update</a>
+                        </td>
+                        <td>
+
+                            @{
+                                if (item.IsDeleted == false)
+                                {
+                                    <form asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Product" asp-action="Restore" asp-route-id="@item.Id" method="post">
+                                        <button class="btn btn-success">Restore</button>
+                                    </form>
+                                }
+                            }
+
+
+
+                        </td>
+            </tr>
+                        
+        }
+    </tbody>
+</table>
+</div>
+
