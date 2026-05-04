@@ -11,7 +11,7 @@ namespace AdminTask.Areas.Admin.Controllers
         public ProductController(AppDbContext context)
         {
             _context = context;
-            
+
         }
         public IActionResult Index()
         {
@@ -19,13 +19,17 @@ namespace AdminTask.Areas.Admin.Controllers
             return View(products);
         }
         public IActionResult Create()
-            {
-                return View();
-            }
+        {
+            return View();
+        }
         [HttpPost]
 
         public IActionResult Create(Product product)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             _context.Products.Add(product);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
@@ -45,6 +49,28 @@ namespace AdminTask.Areas.Admin.Controllers
         {
             Product product = _context.Products.Find(id);
             product.IsDeleted = false;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult Update(int id)
+        {
+            Product product = _context.Products.Find(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            Product oldProduct = _context.Products.Find(product.Id);
+            oldProduct.Title = product.Title;
+            oldProduct.Major = product.Major;
+            oldProduct.ImageUrl = product.ImageUrl;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

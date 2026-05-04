@@ -4022,11 +4022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\AdminTask\\AdminTask.csproj",
+      "projectUniqueName": "D:\\Projects\\Admin-Task\\AdminTask.csproj",
       "projectName": "AdminTask",
-      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\AdminTask\\AdminTask.csproj",
+      "projectPath": "D:\\Projects\\Admin-Task\\AdminTask.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\AdminTask\\obj\\",
+      "outputPath": "D:\\Projects\\Admin-Task\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
